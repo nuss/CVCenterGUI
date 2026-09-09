@@ -82,15 +82,15 @@ TestConnectorNameField : UnitTest {
 		oscelement2.close;
 	}
 
-	test_widget_ {
+	test_setWidget {
 		widget2 = CVWidgetKnob(\test2);
 		widget2.wmc.midiConnectors.m.value[0].name_(\midi);
 		widget2.wmc.oscConnectors.m.value[0].name_(\osc);
-		midielement1.widget_(widget2);
-		oscelement1.widget_(widget2);
-		this.assert(midielement1.widget === widget2, "After calling widget_ on the ConnectorNameField (connectorKind: 'midi') with arg 'widget' set to widget2 the ConnectorNameField's 'widget' getter should returm widget2");
+		midielement1.setWidget(widget2);
+		oscelement1.setWidget(widget2);
+		this.assert(midielement1.widget === widget2, "After calling setWidget on the ConnectorNameField (connectorKind: 'midi') with arg 'widget' set to widget2 the ConnectorNameField's 'widget' getter should returm widget2");
 		this.assertEquals(midielement1.string.asSymbol, widget2.wmc.midiConnectorNames.m.value[0], "The ConnectorNameField's (connectorKind: 'midi') TextField should have been set to the name of the currently set value in widget2.wmc.midiConnectorNames.m.value[0]");
-		this.assert(oscelement1.widget === widget2, "After calling widget_ on the ConnectorNameField (connectorKind: 'osc') with arg 'widget' set to widget2 the ConnectorNameField's 'widget' getter should returm widget2");
+		this.assert(oscelement1.widget === widget2, "After calling setWidget on the ConnectorNameField (connectorKind: 'osc') with arg 'widget' set to widget2 the ConnectorNameField's 'widget' getter should returm widget2");
 		this.assertEquals(oscelement1.string.asSymbol, widget2.wmc.oscConnectorNames.m.value[0], "The ConnectorNameField's (connectorKind: 'osc') TextField should have been set to the name of the currently set value in widget2.wmc.oscConnectorNames.m.value[0]");
 		widget2.remove;
 	}
@@ -163,14 +163,14 @@ TestConnectorSelect : UnitTest {
 		oscelement2.close;
 	}
 
-	test_widget_ {
+	test_setWidget {
 		widget2 = CVWidgetKnob(\test2);
 		widget2.wmc.midiConnectors.m.value[0].name(\qqqqqq_midi);
 		widget2.wmc.oscConnectors.m.value[0].name(\qqqqqq_osc);
-		midielement1.widget_(widget2);
-		oscelement1.widget_(widget2);
-		this.assert(midielement1.widget === widget2, "After calling widget_ on the ConnectorSelect (connectorKind: 'midi') with arg 'widget' set to widget2 the ConnectorSelect's 'widget' getter should return widget2");
-		this.assert(oscelement1.widget === widget2, "After calling widget_ on the ConnectorSelect (connectorKind: 'osc') with arg 'widget' set to widget2 the ConnectorSelect's 'widget' getter should return widget2");
+		midielement1.setWidget(widget2);
+		oscelement1.setWidget(widget2);
+		this.assert(midielement1.widget === widget2, "After calling setWidget on the ConnectorSelect (connectorKind: 'midi') with arg 'widget' set to widget2 the ConnectorSelect's 'widget' getter should return widget2");
+		this.assert(oscelement1.widget === widget2, "After calling setWidget on the ConnectorSelect (connectorKind: 'osc') with arg 'widget' set to widget2 the ConnectorSelect's 'widget' getter should return widget2");
 		widget2.remove;
 	}
 
@@ -218,12 +218,12 @@ TestMidiLearnButton : UnitTest {
 		this.assertEquals(element1.view.value, 1, "After calling element2.valueAction_(1) and setting element1.index_(1) element1.view.value should return 1");
 	}
 
-	test_widget_ {
+	test_setWidget {
 		widget2 = CVWidgetKnob(\test2);
 		element1.valueAction_(1);
-		element1.widget_(widget2);
-		this.assert(element1.widget === widget2, "After calling widget_ on the MidiLearnButton with arg 'widget' set to widget2 the MidiLearnButton's 'widget' getter should return widget2");
-		this.assertEquals(element1.view.value, 0, "After setting element1.valueAction_(1) should leave element1's value at 0 after calling element1.widget_(widget2).");
+		element1.setWidget(widget2);
+		this.assert(element1.widget === widget2, "After calling setWidget on the MidiLearnButton with arg 'widget' set to widget2 the MidiLearnButton's 'widget' getter should return widget2");
+		this.assertEquals(element1.view.value, 0, "After setting element1.valueAction_(1) should leave element1's value at 0 after calling element1.setWidget(widget2).");
 		widget2.remove;
 	}
 
@@ -273,12 +273,12 @@ TestMidiSrcSelect : UnitTest {
 		this.assertEquals(element1.view.value, 1, "After calling element2.valueAction_(1) and setting element1.index_(1) element1.view.value should return 1");
 	}
 
-	test_widget_ {
+	test_setWidget {
 		widget2 = CVWidgetKnob(\test2);
 		element1.valueAction_(1);
-		element1.widget_(widget2);
-		this.assert(element1.widget === widget2, "After calling widget_ on the MidiSrcSelect with arg 'widget' set to widget2 the MidiSrcSelect's 'widget' getter should return widget2");
-		this.assertEquals(element1.view.value, 0, "After setting element1.valueAction_(1) should leave element1's value at 0 after calling element1.widget_(widget2).");
+		element1.setWidget(widget2);
+		this.assert(element1.widget === widget2, "After calling setWidget on the MidiSrcSelect with arg 'widget' set to widget2 the MidiSrcSelect's 'widget' getter should return widget2");
+		this.assertEquals(element1.view.value, 0, "After setting element1.valueAction_(1) should leave element1's value at 0 after calling element1.setWidget(widget2).");
 		widget2.remove;
 	}
 
@@ -328,12 +328,12 @@ TestMidiChanField : UnitTest {
 		this.assertEquals(element1.string, "1", "After calling element2.valueAction_(1) and setting element1.index_(1) element1.string should return \"1\"");
 	}
 
-	test_widget_ {
+	test_setWidget {
 		widget2 = CVWidgetKnob(\test2);
 		element1.valueAction_(1);
-		element1.widget_(widget2);
-		this.assert(element1.widget === widget2, "After calling widget_ on the MidiChanField with arg 'widget' set to widget2 the MidiChanField's 'widget' getter should return widget2");
-		this.assertEquals(element1.string, "chan", "After setting element1.valueAction_(1) should leave element1's string at \"chan\" after calling element1.widget_(widget2).");
+		element1.setWidget(widget2);
+		this.assert(element1.widget === widget2, "After calling setWidget on the MidiChanField with arg 'widget' set to widget2 the MidiChanField's 'widget' getter should return widget2");
+		this.assertEquals(element1.string, "chan", "After setting element1.valueAction_(1) should leave element1's string at \"chan\" after calling element1.setWidget(widget2).");
 		widget2.remove;
 	}
 
@@ -381,12 +381,12 @@ TestMidiCtrlField : UnitTest {
 		this.assertEquals(element1.string, "1", "After calling element2.valueAction_(1) and setting element1.index_(1) element1.string should return \"1\"");
 	}
 
-	test_widget_ {
+	test_setWidget {
 		widget2 = CVWidgetKnob(\test2);
 		element1.valueAction_(1);
-		element1.widget_(widget2);
-		this.assert(element1.widget === widget2, "After calling widget_ on the MidiCtrlField with arg 'widget' set to widget2 the MidiCtrlField's 'widget' getter should return widget2");
-		this.assertEquals(element1.string, "ctrl", "After setting element1.valueAction_(1) should leave element1's string at \"ctrl\" after calling element1.widget_(widget2).");
+		element1.setWidget(widget2);
+		this.assert(element1.widget === widget2, "After calling setWidget on the MidiCtrlField with arg 'widget' set to widget2 the MidiCtrlField's 'widget' getter should return widget2");
+		this.assertEquals(element1.string, "ctrl", "After setting element1.valueAction_(1) should leave element1's string at \"ctrl\" after calling element1.setWidget(widget2).");
 		widget2.remove;
 	}
 
@@ -434,12 +434,12 @@ TestMidiModeSelect : UnitTest {
 		this.assertEquals(element1.view.value, 1, "After calling element2.valueAction_(1) and setting element1.index_(1) element1.view.value should return 1");
 	}
 
-	test_widget_ {
+	test_setWidget {
 		widget2 = CVWidgetKnob(\test2);
 		element1.valueAction_(1);
-		element1.widget_(widget2);
-		this.assert(element1.widget === widget2, "After calling widget_ on the MidiModeSelect with arg 'widget' set to widget2 the MidiModeSelect's 'widget' getter should return widget2");
-		this.assertEquals(element1.view.value, 0, "After setting element1.valueAction_(1) should leave element1's value at 0 after calling element1.widget_(widget2).");
+		element1.setWidget(widget2);
+		this.assert(element1.widget === widget2, "After calling setWidget on the MidiModeSelect with arg 'widget' set to widget2 the MidiModeSelect's 'widget' getter should return widget2");
+		this.assertEquals(element1.view.value, 0, "After setting element1.valueAction_(1) should leave element1's value at 0 after calling element1.setWidget(widget2).");
 		widget2.remove;
 	}
 }
@@ -480,12 +480,12 @@ TestMidiZeroNumberBox : UnitTest {
 		this.assertEquals(element1.view.value, 1, "After calling element2.valueAction_(1) and setting element1.index_(1) element1.view.value should return 1.");
 	}
 
-	test_widget_ {
+	test_setWidget {
 		widget2 = CVWidgetKnob(\test2);
 		element1.valueAction_(60);
-		element1.widget_(widget2);
-		this.assert(element1.widget === widget2, "After calling widget_ on the MidiZeroNumberBox with arg 'widget' set to widget2 the MidiZeroNumberBox's 'widget' getter should return widget2");
-		this.assertEquals(element1.view.value, 64, "After setting element1.valueAction_(60) should leave element1's value at 64 after calling element1.widget_(widget2).");
+		element1.setWidget(widget2);
+		this.assert(element1.widget === widget2, "After calling setWidget on the MidiZeroNumberBox with arg 'widget' set to widget2 the MidiZeroNumberBox's 'widget' getter should return widget2");
+		this.assertEquals(element1.view.value, 64, "After setting element1.valueAction_(60) should leave element1's value at 64 after calling element1.setWidget(widget2).");
 		widget2.remove;
 	}
 
@@ -533,12 +533,12 @@ TestSnapDistanceNumberBox : UnitTest {
 		this.assertEquals(element1.view.value, 1, "After calling element2.valueAction_(1) and setting element1.index_(1) element1.view.value should return 1.");
 	}
 
-	test_widget_ {
+	test_setWidget {
 		widget2 = CVWidgetKnob(\test2);
 		element1.valueAction_(1);
-		element1.widget_(widget2);
-		this.assert(element1.widget === widget2, "After calling widget_ on the SnapDistanceNumberBox with arg 'widget' set to widget2 the SnapDistanceNumberBox's 'widget' getter should return widget2");
-		this.assertEquals(element1.view.value, 0, "After setting element1.valueAction_(1) should leave element1's value at 0 after calling element1.widget_(widget2).");
+		element1.setWidget(widget2);
+		this.assert(element1.widget === widget2, "After calling setWidget on the SnapDistanceNumberBox with arg 'widget' set to widget2 the SnapDistanceNumberBox's 'widget' getter should return widget2");
+		this.assertEquals(element1.view.value, 0, "After setting element1.valueAction_(1) should leave element1's value at 0 after calling element1.setWidget(widget2).");
 		widget2.remove;
 	}
 
@@ -586,12 +586,12 @@ TestMidiResolutionNumberBox : UnitTest {
 		this.assertEquals(element1.view.value, 1, "After calling element2.valueAction_(1) and setting element1.index_(1) element1.view.value should return 1.");
 	}
 
-	test_widget_ {
+	test_setWidget {
 		widget2 = CVWidgetKnob(\test2);
 		element1.valueAction_(0.5);
-		element1.widget_(widget2);
-		this.assert(element1.widget === widget2, "After calling widget_ on the MidiResolutionNumberBox with arg 'widget' set to widget2 the MidiResolutionNumberBox's 'widget' getter should return widget2");
-		this.assertEquals(element1.view.value, 1, "After setting element1.valueAction_(0.5) should leave element1's value at 1 after calling element1.widget_(widget2).");
+		element1.setWidget(widget2);
+		this.assert(element1.widget === widget2, "After calling setWidget on the MidiResolutionNumberBox with arg 'widget' set to widget2 the MidiResolutionNumberBox's 'widget' getter should return widget2");
+		this.assertEquals(element1.view.value, 1, "After setting element1.valueAction_(0.5) should leave element1's value at 1 after calling element1.setWidget(widget2).");
 		widget2.remove;
 	}
 
@@ -639,12 +639,12 @@ TestSlidersPerGroupNumberBox : UnitTest {
 		this.assertEquals(element1.view.value, 3, "After calling element2.valueAction_(3) and setting element1.index_(1) element1.value should return 3");
 	}
 
-	test_widget_ {
+	test_setWidget {
 		widget2 = CVWidgetKnob(\test2);
 		element1.valueAction_(6);
-		element1.widget_(widget2);
-		this.assert(element1.widget === widget2, "After calling widget_ on the SlidersPerGroupNumberBox with arg 'widget' set to widget2 the SlidersPerGroupNumberBox's 'widget' getter should return widget2");
-		this.assertEquals(element1.view.value, 1, "After setting element1.valueAction_(6) should leave element1's value at 1 after calling element1.widget_(widget2).");
+		element1.setWidget(widget2);
+		this.assert(element1.widget === widget2, "After calling setWidget on the SlidersPerGroupNumberBox with arg 'widget' set to widget2 the SlidersPerGroupNumberBox's 'widget' getter should return widget2");
+		this.assertEquals(element1.view.value, 1, "After setting element1.valueAction_(6) should leave element1's value at 1 after calling element1.setWidget(widget2).");
 		widget2.remove;
 	}
 
@@ -725,10 +725,10 @@ TestConnectorRemoveButton : UnitTest {
 		this.assertEquals(button2.connector.name, 'MIDI Connection 1', "After adding another MidiConnector to the CVWidgetKnob instance stored in widget and setting calling index_ with a value 1 on button1 button2.connector.name should return 'MIDI Connection 1'");
 	}
 
-	test_widget_ {
+	test_setWidget {
 		widget2 = CVWidgetKnob(\test2);
-		button1.widget_(widget2);
-		this.assert(button1.widget === widget2, "After calling widget_ on the ConnectorRemoveButton with arg 'widget' set to widget2 the ConnectorRemoveButton's 'widget' getter should return widget2");
+		button1.setWidget(widget2);
+		this.assert(button1.widget === widget2, "After calling setWidget on the ConnectorRemoveButton with arg 'widget' set to widget2 the ConnectorRemoveButton's 'widget' getter should return widget2");
 		widget2.remove;
 	}
 
@@ -795,16 +795,16 @@ TestPlayPauseButton : UnitTest {
 		this.assertEquals(oscbutton1.view.enabled, true, "After calling oscbutton1.index_(1) oscbutton1.view.enabled should return true");
 	}
 
-	test_widget_ {
+	test_setWidget {
 		widget2 = CVWidgetKnob(\test2);
 		widget2.midiConnect(widget2.midiConnectors[0], num: 0); // midibutton1 should be enabled after switching widget
 		this.assert(midibutton1.view.enabled == false, "midibutton1 should be disabled before switching the widget.");
-		midibutton1.widget_(widget2);
+		midibutton1.setWidget(widget2);
 		this.assert(midibutton1.view.enabled == true, "midibutton1 should be enabled after switching the widget");
 		this.assert(midibutton1.widget == widget2, "midibutton1's 'widget' variable should hold widget2 after switching the widget.");
 		widget2.oscConnect(widget2.oscConnectors[0], NetAddr("127.0.0.1", 57120), '/test'); // oscbutton1 should be enabled after switching widget
 		this.assert(oscbutton1.view.enabled == false, "oscbutton1 should be disabled before switching the widget.");
-		oscbutton1.widget_(widget2);
+		oscbutton1.setWidget(widget2);
 		this.assert(oscbutton1.view.enabled == true, "oscbutton1 should be enabled after switching the widget");
 		this.assert(oscbutton1.widget == widget2, "oscbutton1's 'widget' variable should hold widget2 after switching the widget.");
 		widget2.remove;
@@ -866,12 +866,12 @@ TestOscZeroCrossingText : UnitTest {
 		this.assertEquals(statictext1.string, "0.1", "After calling statictext1.index_(1) it's string should have been set to \"0.1\".")
 	}
 
-	test_widget_ {
+	test_setWidget {
 		widget2 = CVWidgetKnob(\other);
 		widget1.setOscInputAlwaysPositive(1.0, 0);
 		this.assertEquals(statictext1.string, "1.0", "statictext1 should have been set to streing \"1.0\" after calling widget1.setOscInputAlwaysPositive(1.0, 0).");
-		statictext1.widget_(widget2);
-		this.assertEquals(statictext1.string, "0.1", "After calling statictext1.widget_(widget2) it's string should have been set to \"0.1\".");
+		statictext1.setWidget(widget2);
+		this.assertEquals(statictext1.string, "0.1", "After calling statictext1.setWidget(widget2) it's string should have been set to \"0.1\".");
 		widget2.remove;
 	}
 

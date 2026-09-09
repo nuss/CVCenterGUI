@@ -71,7 +71,7 @@ OscConnectorsEditorView : SCViewHolder {
 		e.slotNumBox = ConnectorSlotMumBox(parent, widget, slot: slot !? { slot.asInteger }, connectorID: index, connectorKind: \osc);
 		e.addrAndCmdSelect = OscSelectsComboView(parent, widget, slot: slot !? { slot.asInteger }, connectorID: index);
 		e.oscCmdTextField = OscCmdNameField(parent, widget, slot: slot !? { slot.asInteger }, connectorID: index);
-		e.oscMsgIndexNumBox = OscMsgIndexBox(parent, widget, slot: slot !? { slot.asInteger }, connectorID: index).value_(oscDisplayValues[index].index);
+		e.oscMsgIndexNumBox = OscMsgIndexBox(parent, widget, slot: slot !? { slot.asInteger }, connectorID: index).value_(oscDisplayValues[index].msgSlot);
 		e.oscPatternMatchingCheckBox = OscMatchingCheckBox(parent, widget, slot: slot !? { slot.asInteger }, connectorID: index);
 		e.oscModeSelect = OscModeSelect(parent, widget, slot: slot !? { slot.asInteger }, connectorID: index);
 		e.oscResolutionNumBox = OscResolutionBox(parent, widget, slot: slot !? { slot.asInteger }, connectorID: index);

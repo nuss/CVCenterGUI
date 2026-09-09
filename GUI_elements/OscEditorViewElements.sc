@@ -146,7 +146,7 @@ OscMsgIndexBox : ConnectorElementView {
 
 		this.prMCDistinct(\osc);
 		this.view = NumberBox(parentView, rect)
-		.clipLo_(1).step_(1).scroll_step_(1)
+		.clipLo_(1).clipHi_(displayM.value[index].numMsgSlots).step_(1).scroll_step_(1)
 		.toolTip_("If OSC message conatains more than one value select message slot that shall be read");
 		this.view.onClose_({ this.close });
 		this.index_(index);
@@ -166,7 +166,7 @@ OscMsgIndexBox : ConnectorElementView {
 	index_ { |connectorID|
 		connector = connectors[connectorID];
 		displayM.value[connectorID] !? {
-			this.view.value_(displayM.value[connectorID].index)
+			this.view.value_(displayM.value[connectorID].msgSlot)
 		};
 		this.view.enabled_(connectionsM.value[connectorID].isNil);
 	}
@@ -204,7 +204,7 @@ OscMsgIndexBox : ConnectorElementView {
 				if (nb.connector === connectors[conID]) {
 					defer {
 						nb.view.clipHi_(changer.value[conID].numMsgSlots)
-						.value_(changer.value[conID].index)
+						.value_(changer.value[conID].msgSlot)
 					}
 				}
 			}
